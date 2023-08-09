@@ -1,0 +1,9 @@
+#pragma once
+
+#include "NativeGameplayTags.h"
+
+UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_State_MovementMode_Walking);
+UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_State_MovementMode_Falling);
+UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_State_MovementMode_Swimming);
+UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_State_MovementMode_Flying);
+UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_State_MovementMode_Custom);
