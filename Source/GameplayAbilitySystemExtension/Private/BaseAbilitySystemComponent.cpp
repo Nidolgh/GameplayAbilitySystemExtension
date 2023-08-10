@@ -90,20 +90,6 @@ void UBaseAbilitySystemComponent::GiveAbilities()
 
 				const FEnhancedInputActionHandlerSignature::TMethodPtr<UAbilitySystemComponent, int> ReleasedDelegate = &UAbilitySystemComponent::AbilityLocalInputReleased;
 				OwningInputComponent->BindAction(InpAction, ETriggerEvent::Completed, this, ReleasedDelegate, InputID);
-				
-				// // Pressed event
-				// {
-				// 	FInputActionBinding AB(FName(*FullStr), IE_Pressed);
-				// 	AB.ActionDelegate.GetDelegateForManualSet().BindUObject(this, &UAbilitySystemComponent::AbilityLocalInputPressed, idx);
-				// 	InputComponent->AddActionBinding(AB);
-				// }
-				//
-				// // Released event
-				// {
-				// 	FInputActionBinding AB(FName(*FullStr), IE_Released);
-				// 	AB.ActionDelegate.GetDelegateForManualSet().BindUObject(this, &UAbilitySystemComponent::AbilityLocalInputReleased, idx);
-				// 	InputComponent->AddActionBinding(AB);
-				// }
 			}
 			
 			GiveAbility(FGameplayAbilitySpec(StartupAbility, 1, InputID, this));
