@@ -22,6 +22,6 @@ public:
 	// Implement IAbilitySystemInterface
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 
-	UPROPERTY()
+	UPROPERTY(Category="Gameplay Ability System", VisibleAnywhere, BlueprintReadOnly, meta=(AllowPrivateAccess = "true"))
 	class UBaseAbilitySystemComponent* AbilitySystemComponent;
 };

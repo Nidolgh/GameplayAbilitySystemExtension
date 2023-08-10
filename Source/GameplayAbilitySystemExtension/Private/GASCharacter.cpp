@@ -11,6 +11,18 @@ AGASCharacter::AGASCharacter()
 	AbilitySystemComponent = CreateDefaultSubobject<UBaseAbilitySystemComponent>("AbilitySystemComponent");
 }
 
+void AGASCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+
+	if (AbilitySystemComponent == nullptr)
+	{
+		return;
+	}
+	
+	AbilitySystemComponent->BindToInputComponent(PlayerInputComponent);
+}
+
 void AGASCharacter::OnMovementModeChanged(EMovementMode PrevMovementMode, uint8 PreviousCustomMode)
 {
 	Super::OnMovementModeChanged(PrevMovementMode, PreviousCustomMode);

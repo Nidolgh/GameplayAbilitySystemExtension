@@ -20,6 +20,6 @@ public:
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	// End
 	
-	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "GAS")
+	UPROPERTY(Category="Gameplay Ability System", VisibleAnywhere, BlueprintReadOnly, meta=(AllowPrivateAccess = "true"))
 	class UBaseAbilitySystemComponent* AbilitySystemComponent;
 };

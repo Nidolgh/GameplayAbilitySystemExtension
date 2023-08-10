@@ -17,6 +17,8 @@ class GAMEPLAYABILITYSYSTEMEXTENSION_API UBaseAbilitySystemComponent : public UA
 public:
 	virtual void BeginPlay() override;
 
+	virtual void BindToInputComponent(UInputComponent* InputComponent) override;
+	
 protected:
 	UPROPERTY()
 	const class UBaseAttributeSet* BaseAttributeSet;
@@ -44,4 +46,6 @@ private:
 
 	bool bAbilitiesGiven = false;
 	bool bStartupEffectsApplied = false;
+
+	UEnhancedInputComponent* OwningInputComponent = nullptr;
 };

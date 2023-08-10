@@ -15,12 +15,14 @@ public:
 	AGASCharacter();
 
 protected:
+	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
+	
 	virtual void OnMovementModeChanged(EMovementMode PrevMovementMode, uint8 PreviousCustomMode) override;
 	
 public:
 	// Implement IAbilitySystemInterface
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	
-	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category="GAS")
+	UPROPERTY(Category="Gameplay Ability System", VisibleAnywhere, BlueprintReadOnly, meta=(AllowPrivateAccess = "true"))
 	class UBaseAbilitySystemComponent* AbilitySystemComponent;
 };
