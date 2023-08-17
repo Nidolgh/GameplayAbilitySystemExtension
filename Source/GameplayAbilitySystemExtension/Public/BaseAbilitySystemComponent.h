@@ -16,7 +16,6 @@ class GAMEPLAYABILITYSYSTEMEXTENSION_API UBaseAbilitySystemComponent : public UA
 
 public:
 	virtual void BeginPlay() override;
-
 	virtual void BindToInputComponent(UInputComponent* InputComponent) override;
 	
 protected:
@@ -30,11 +29,15 @@ protected:
 	// list of default gameplay abilities
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "GAS")
 	TArray<TSubclassOf<class UBaseGameplayAbility>> CharacterAbilities;
-	
-	// Effect that initializes our default attributes
-	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "GAS")
-	TSubclassOf<UGameplayEffect> DefaultAttributes;
 
+	// The set of attributes we will initialize
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "GAS")
+	TSubclassOf<UAttributeSet> DefaultAttributeSet;
+	
+	// Effect that initializes our default attribute set
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "GAS", meta = (EditCondition = "DefaultAttributeSet != nullptr"))
+	TSubclassOf<UGameplayEffect> DefaultAttributeEffect;
+	
 	// These effects are only applied one time on startup
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "GAS")
 	TArray<TSubclassOf<UGameplayEffect>> StartupEffects;

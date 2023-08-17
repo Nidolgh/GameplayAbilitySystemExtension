@@ -10,12 +10,12 @@
 void UBaseAbilitySystemComponent::BeginPlay()
 {
 	Super::BeginPlay();
-
+	
 	BaseAttributeSet = GetSet<UBaseAttributeSet>();
 	AddLooseGameplayTags(StartupGameplayTags);
 
 	InitAbilityActorInfo(GetOwner(), GetOwner());
-
+	
 	InitializeAttributes();
 	AddStartupEffects();
 	GiveAbilities();
@@ -29,15 +29,17 @@ void UBaseAbilitySystemComponent::BindToInputComponent(UInputComponent* InputCom
 
 void UBaseAbilitySystemComponent::InitializeAttributes()
 {
-	if (!IsValid(DefaultAttributes))
+	if (!IsValid(DefaultAttributeEffect) || !IsValid(DefaultAttributeSet))
 	{
 		return;
 	}
-	
+
+	GetOrCreateAttributeSubobject(DefaultAttributeSet);
+
 	FGameplayEffectContextHandle EffectContext = MakeEffectContext();
 	EffectContext.AddSourceObject(this);
 
-	const FGameplayEffectSpecHandle SpecHandle = MakeOutgoingSpec(DefaultAttributes, 1, EffectContext);
+	const FGameplayEffectSpecHandle SpecHandle = MakeOutgoingSpec(DefaultAttributeEffect, 1, EffectContext);
 	if (SpecHandle.IsValid())
 	{
 		ApplyGameplayEffectSpecToSelf(*SpecHandle.Data.Get());
