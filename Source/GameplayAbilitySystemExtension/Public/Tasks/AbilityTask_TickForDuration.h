@@ -5,8 +5,9 @@
 #include "AbilityTask_TickForDuration.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FTickForDurationDelegate, float, TimeStarted, float, TimeWillEnd, float, TimeLeft);
+
 /**
- * 
+ * If duration is equal or lower then 0 this task will continue indefinitely
  */
 UCLASS()
 class GAMEPLAYABILITYSYSTEMEXTENSION_API UAbilityTask_TickForDuration : public UAbilityTask
